@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message for You 💌</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 50px;
+      text-shadow: 0 0 20px #fff;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .message-container {
+      margin-top: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.3em;
+      line-height: 1.8em;
+    }
+
+    .message {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1.5s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255,255,255,0.8);
+      transform: rotate(45deg);
+      animation: floatHearts 8s linear infinite;
+      border-radius: 4px;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255,255,255,0.8);
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0) scale(1) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5) rotate(45deg); opacity: 0; }
+    }
+
+    /* Buttons */
+    .buttons {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .next-btn, .back-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      box-shadow: 0 0 25px rgba(255,255,255,0.8);
+      transition: all 0.3s ease;
+      margin: 0 10px;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .next-btn:hover, .back-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 NTE MOWLE💖</h1>
+
+  <div class="message-container">
+    <p class="message" style="animation-delay: 4s;">ni nte shundariyeee alledi kunji kutty 💞</p>
+
+    <p class="message" style="animation-delay: 0.5s;"> ni nte shutumani alle shundapii Ni swathmaii therumanm aduktah...allaveryum choiche cheyan nina sheriyavila...pinee preshnm ahnu🌸</p>
+    <p class="message" style="animation-delay: 2s;">Pinee thadi alle vannolum ni tension ahvanda kettah 💫</p>
+    <p class="message" style="animation-delay: 6s;">pinee nurse ahn jolikal okke mariyatheki cheynm kettah allande thamasa kalikyaruthe 🩺🌷</p>
+    <p class="message" style="animation-delay: 8s;">Over thinking ninake kooduthal ahnu athoke ready ahknm chumma erinnu karayande strong atiyu nilknm ennepole 💪💖</p>
+    <p class="message" style="animation-delay: 10s;">pinne annum egane vazhake sheriyavanilatah so athu kurache kurache okke sneham ahvam kettodi penne 🌹</p>
+    <p class="message" style="animation-delay: 12s;">enni ahnu main ...kalli penne enne vitu poovale ......kettah mistressee...shakthiyilkum shakthiman....nte kujji kutty💫</p>
+  </div>
+
+  <div class="buttons">
+    <a href="wishes.html" class="back-btn">⬅️ Back</a>
+    <a href="memories.html" class="next-btn">Next 🎁</a>
+  </div>
+
+  <script>
+    // Create floating hearts continuously
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 6 + Math.random() * 4 + 's';
+      heart.style.backgroundColor = 'rgba(255, 255, 255, ' + (0.5 + Math.random() * 0.5) + ')';
+      document.body.appendChild(heart);
+      setTimeout(() => { heart.remove(); }, 8000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+  <!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="assets/musics/romantic-love-background-couple-music-357650.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("bg-music");
+  music.volume = 0.25; // soft background level
+  // Safari/iPhone sometimes blocks autoplay — wait for user gesture
+  document.addEventListener('click', () => {
+    if (music.paused) music.play();
+  }, { once: true });
+</script>
+
+</body>
+</html>

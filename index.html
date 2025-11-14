@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Alna 💖</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating hearts & sparkles */
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 0 0 15px #fff;
+      border-right: 3px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0ch;
+      animation: typing 4s steps(30, end) forwards, blink 0.6s infinite;
+      z-index: 2;
+    }
+
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: 25ch; } /* Adjust if you change text length */
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 4.5s;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .buttons {
+      margin-top: 40px;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 6s;
+      z-index: 2;
+    }
+
+    .next-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      box-shadow: 0 0 15px #ff69b4;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .next-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday Alnechiiyeee💖🌹</h1>
+  <p>    <p class="message" style="animation-delay: 4s;">ni nte shundariyeee alledi kunji kutty 💞</p>
+ 🌸</p>
+
+  <div class="buttons">
+    <a href="wishes.html" class="next-btn">Next❤️</a>
+  </div>
+
+  <!-- Floating hearts generator -->
+  <script>
+    const heartEmojis = ['💖', '💞', '💘', '💝', '✨', '🌸','🌹'];
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      heart.style.fontSize = (16 + Math.random() * 24) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+
+
+<!-- background music -->
+<audio id="bg-music" loop preload="auto">
+  <source src="assets/musics/soft-piano-acoustic-guitar-subtle-flute-331844.mp3" type="audio/mpeg">
+</audio>
+
+<!-- sound toggle button -->
+<!-- <button id="music-btn">🔊</button>
+
+<script>
+  const btn = document.getElementById('music-btn');
+
+
+  // style button
+  btn.style.position = 'fixed';
+  btn.style.bottom = '20px';
+  btn.style.right = '20px';
+  btn.style.fontSize = '24px';
+  btn.style.border = 'none';
+  btn.style.background = 'rgba(255,255,255,0.3)';
+  btn.style.borderRadius = '50%';
+  btn.style.width = '50px';
+  btn.style.height = '50px';
+  btn.style.cursor = 'pointer';
+  btn.style.boxShadow = '0 0 10px rgba(255,255,255,0.6)';
+
+  // toggle play / pause
+  let playing = false;
+  btn.addEventListener('click', () => {
+    if (!playing) {
+      music.play();
+      btn.textContent = '🔈';
+      playing = true;
+    } else {
+      music.pause();
+      btn.textContent = '🔊';
+      playing = false;
+    }
+  });
+</script> -->
+
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="assets/musics/romantic-love-background-couple-music-357650.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("bg-music");
+  music.volume = 0.25; // soft background level
+  // Safari/iPhone sometimes blocks autoplay — wait for user gesture
+  document.addEventListener('click', () => {
+    if (music.paused) music.play();
+  }, { once: true });
+</script>
+
+</body>
+</html>

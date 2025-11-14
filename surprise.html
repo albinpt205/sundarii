@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise 🎈</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      color: white;
+      height: 100vh;
+      position: relative;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5em;
+      text-shadow: 0 0 15px #fff;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 100px;
+      height: 130px;
+      border-radius: 50% 50% 45% 55%;
+      cursor: pointer;
+      animation: floatUp 6s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .balloon:hover {
+      transform: scale(1.05);
+    }
+
+    /* Rope */
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 80px;
+      background: rgba(255,255,255,0.6);
+      top: 100%;
+    }
+
+    /* Floating animation */
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+
+    /* Pop animation */
+    @keyframes pop {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* Message after popping */
+    .message {
+      position: absolute;
+      color: #fff;
+      font-size: 1.6em;
+      text-shadow: 0 0 20px #fff;
+      opacity: 0;
+      animation: fadeInMsg 1.2s forwards;
+    }
+
+    @keyframes fadeInMsg {
+      from { opacity: 0; transform: scale(0.8) translateY(-10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .buttons {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    .next-btn, .back-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      box-shadow: 0 0 25px rgba(255,255,255,0.8);
+      transition: all 0.3s ease;
+      margin: 0 10px;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .next-btn:hover, .back-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 35px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎈 Tap the Balloons for a Surprise 💖</h1>
+  <h2>I LOVE U,</h2>
+
+  <!-- Balloons with different colors -->
+<!-- 5 Balloons with unique messages -->
+<div class="balloon" 
+  style="background: radial-gradient(circle at 30% 30%, #a3d8f4, #0077b6); 
+  left: 15%; top: 65%;" 
+  data-msg="Alnechi ☀️">
+</div>
+
+<div class="balloon" 
+  style="background: radial-gradient(circle at 30% 30%, #baffc9, #00c853); 
+  left: 35%; top: 50%;" 
+  data-msg="My Mistress 💖">
+</div>
+
+<div class="balloon" 
+  style="background: radial-gradient(circle at 30% 30%, #f3c4fb, #a100f2); 
+  left: 55%; top: 60%;" 
+  data-msg="Shakthiman 🌸">
+</div>
+
+<div class="balloon" 
+  style="background: radial-gradient(circle at 30% 30%, #ff9a9e, #ff2e63); 
+  left: 75%; top: 55%;" 
+  data-msg="Kunjiiiii💞">
+</div>
+
+<!-- <div class="balloon" 
+  style="background: radial-gradient(circle at 30% 30%, #ffd371, #ff9800); 
+  left: 50%; top: 75%;" 
+  data-msg="I Love You cutieeee❤️">
+</div> -->
+
+  <div class="buttons">
+    <a href="memories.html" class="back-btn">⬅️ Back</a>
+    <a href="love-letter.html" class="next-btn">Next ❤️</a>
+  </div>
+
+  <script>
+    const balloons = document.querySelectorAll('.balloon');
+
+    balloons.forEach(b => {
+      b.addEventListener('click', () => {
+        const msg = document.createElement('div');
+        msg.classList.add('message');
+        msg.textContent = b.getAttribute('data-msg');
+        msg.style.left = b.style.left;
+        msg.style.top = b.style.top;
+        document.body.appendChild(msg);
+        b.style.animation = 'pop 0.4s forwards';
+        setTimeout(() => b.remove(), 400);
+      });
+    });
+  </script>
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="assets/musics/romantic-love-background-couple-music-357650.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("bg-music");
+  music.volume = 0.25; // soft background level
+  // Safari/iPhone sometimes blocks autoplay — wait for user gesture
+  document.addEventListener('click', () => {
+    if (music.paused) music.play();
+  }, { once: true });
+</script>
+</body>
+</html>
